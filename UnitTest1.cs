@@ -5,6 +5,7 @@ namespace My_TestProjectCian
     public class Tests
     {
         private IWebDriver driver;
+        //объявление переменных ддя авторизации пользователя
         private readonly By _signInBtn = By.XPath("//span[text()='Войти']");
         private readonly By _singAnotherWay = By.XPath("//span[text()='Другим способом']");
         private readonly By _loginInputTxt = By.XPath("//input[@name='username']");
@@ -13,48 +14,83 @@ namespace My_TestProjectCian
         private readonly By _passwordInputBtn = By.XPath("//input[@name='password']");
         private readonly By _singInBtnFinish = By.XPath("//button[@data-name='ContinueAuthBtn']");
         private const string _password = "4370203Leksa";
+        //кнопка разместить объявление
         private readonly By _placeAdBtn = By.XPath("//span[text()='+ Разместить объявление']");
+        //переключатель с названием продажа
         private readonly By _saleBtn = By.XPath("//div[@data-mark='switcher_button|adType.dealType|sale']");
+        //тип продажи - Жилая
         private readonly By _livingBtn = By.XPath("//div[@data-mark='switcher_button|adType.propertyType|residential']");
+        //пункт квартира
         private readonly By _flatRb = By.XPath("//span[text()='Квартира']");
+        //поле для ввода адреса 
         private readonly By _adressInputTxt = By.XPath("//input[@name='geo.userInput']");
+        //переменная адреса
         private const string _adress = "Санкт-Петербург, Сестрорецк, Приморское шоссе, 261";
+        //кнопка дальше
         private readonly By _goBtn = By.XPath("//span[text()='Дальше']");
+        //пункт квартира
         private readonly By _flatBtn = By.XPath("//div[@data-mark='switcher_button|ad.housingType|false']");
+        //выпадающий список количества комнат
         private readonly By _comboBox = By.XPath("//span[text()='Не выбрано']");
+        //пункт кол-во комнат - 3
         private readonly By _countRoom = By.XPath("//li[text()='3']");
+        //поле общей плошади квартиры
         private readonly By _totalAreaTxt = By.XPath("//input[@name='urbanTotalArea']");
+        //значение
         private const string _totalAreaText = "100";
+        //поле номер этажа
         private readonly By _floorNumberTxt = By.XPath("//input[@name='floorNumber']");
+        //значение
         private const string _floorNumberText = "10";
+        //поле общего кол-ва этажей
         private readonly By _floorsCountTxt = By.XPath("//input[@name='floorsCount']");
+        //значение
         private const string _floorsCountText = "10";
+        //пукнт типа ремонта квартиры - ЕВРО
         private readonly By _repairTypeBtn = By.XPath("//div[@data-mark='switcher_button|ad.repairType|euro']");
+        //переключатели дополнительной информации об квартиры
         private readonly By _checkBox1 = By.XPath("//span[text()='Окна во двор']");
         private readonly By _checkBox2 = By.XPath("//span[text()='Окна на улицу']");
         private readonly By _checkBox3 = By.XPath("//span[text()='Балкон']");
         private readonly By _checkBox4 = By.XPath("//span[text()='Совмещённый санузел']");
+        //переключатель типа комнат в квартире
         private readonly By _checkBox5 = By.XPath("//span[text()='Изолированная']");
+        //поле жилой площади квартиры
         private readonly By _livingAreaTxt = By.XPath("//input[@name='livingArea']");
+        //значение
         private const string _livingAreaText = "50";
+        //поле площади кухни
         private readonly By _kitchenAreaTxt = By.XPath("//input[@name='kitchenArea']");
+        //значение
         private const string _kitchenAreaText = "15";
+        //поле ввода ссылки видео на yotube
         private readonly By _youtubeTxt = By.XPath("//input[@name='youtube']");
+        //значение
         private const string _youtubeText = "https://www.youtube.com/watch?v=jBx7OfXVsvk";
+        //кнопка Добавить для видео 
         private readonly By _addBtn = By.XPath("//span[text()='Добавить']");
+        //поле ввода картинок 
         private readonly By _photoInput = By.XPath("//input[@name='photos']");
+        //значения
         private const string _photo1 = "C:\\Users\\leksa\\OneDrive\\Изображения\\flat_photo.jpg";
         private const string _photo2 = "C:\\Users\\leksa\\OneDrive\\Изображения\\flat_photo1.jpg";
+        //поле описания квартиры
         private readonly By _aboutFlatTxt = By.TagName("textarea");
+        //значение
         private const string _aboutFlatText = "Это моя квартира и она не продаётся!!!!";
-        //private readonly By _dop = By.XPath("//div[@data-mark='switcher_button||true']");
+        //поле ввода цены
         private readonly By _priceTxt = By.XPath("//input[@name='bargainTerms.price']");
+        //значение
         private const string _priceText = "15000000";
+        //переключатель Возможна ипотека
         private readonly By _ipotekaBtn = By.XPath("//span[text()='Возможна ипотека']");
+        //
         private readonly By _saleTypeBtn = By.XPath("//div[@data-mark='switcher_button|ad.bargainTerms.saleType|free']");
+        //поле для ввода основного номера телефона
         private readonly By _numberTxt = By.XPath("//input[@name='number']");
-        
+        //значение 
         private const string _numberText = "9968853284";
+        //кнопка публикации объявления
         private readonly By _publishBtn = By.XPath("//button[@data-name='PublishButton']");
         
         [SetUp]
@@ -68,6 +104,7 @@ namespace My_TestProjectCian
         [Test]
         public void TestPlaceAnAd()
         {
+            //авторизация пользователя
             var singIn = driver.FindElement(_signInBtn); 
             singIn.Click();
             Thread.Sleep(1000);
@@ -83,62 +120,77 @@ namespace My_TestProjectCian
             var singInFinish = driver.FindElement(_singInBtnFinish);
             singInFinish.Click();
             Thread.Sleep(3000);
-
+            //разместить объявление
             var placeAd = driver.FindElement(_placeAdBtn);
             placeAd.Click();
             Thread.Sleep(1000);
-            //var dop = driver.FindElement(_dop);
-            //dop.Click();
-            //Thread.Sleep(2000);
+            //продажа
             var saleBtn = driver.FindElement(_saleBtn);
             saleBtn.Click();
             Thread.Sleep(2000);
+            //жилая
             var livingBtn = driver.FindElement(_livingBtn);
             livingBtn.Click();
             Thread.Sleep(2000);
+            //выбор пункта Квартира
             var flatRb = driver.FindElement(_flatRb);
             flatRb.Click();
             Thread.Sleep(5000);
+            //поле ввода адреса
             var adressInputTxt = driver.FindElement(_adressInputTxt);
+            //очищение поля
             adressInputTxt.Clear();
             Thread.Sleep(2000);
+            //добавление адреса
             adressInputTxt.SendKeys(_adress);
             Thread.Sleep(4000);
+            //кнопка дальше
             var goBtn = driver.FindElement(_goBtn);
             goBtn.Click();
             Thread.Sleep(4000);
             goBtn.Click();
             Thread.Sleep(3000);
+            //выбор переключателя Квартира
             var flatBtn = driver.FindElement(_flatBtn);
             flatBtn.Click();
             Thread.Sleep(5000);
+            //нажатие на выпадающий список
             var comboBox = driver.FindElement(_comboBox);
             comboBox.Click();
             Thread.Sleep(1000);
+            //выбор кол-ва комнат в квартире
             var countRoom = driver.FindElement(_countRoom);
             countRoom.Click();
             Thread.Sleep(3000);
+            //выбор типа комнат - изолированная
             var checkBox5 = driver.FindElement(_checkBox5);
             checkBox5.Click();
             Thread.Sleep(1000);
+            //ввод общей площади
             var totalAreaTxt = driver.FindElement(_totalAreaTxt);
             totalAreaTxt.SendKeys(_totalAreaText);
             Thread.Sleep(1000);
+            //ввод номера этажа
             var floorNumberTxt = driver.FindElement(_floorNumberTxt);
             floorNumberTxt.SendKeys(_floorNumberText);
             Thread.Sleep(1000);
+            //ввод кол-ва этажей в доме
             var floorsCountTxt = driver.FindElement(_floorsCountTxt);
             floorsCountTxt.SendKeys(_floorsCountText);
             Thread.Sleep(1000);
+            //ввод общей жилой площади
             var livingAreaTxt = driver.FindElement(_livingAreaTxt);
             livingAreaTxt.SendKeys(_livingAreaText);
             Thread.Sleep(1000);
+            //ввод площади кухни
             var kitchenAreaTxt = driver.FindElement(_kitchenAreaTxt);
             kitchenAreaTxt.SendKeys(_kitchenAreaText);
             Thread.Sleep(1000);
+            //выбор типа ремонта квартиры - евро
             var repairTypeBtn = driver.FindElement(_repairTypeBtn);
             repairTypeBtn.Click();
             Thread.Sleep(3000);
+            //выбор переключателей дополнительной информации о квартире
             var checkBox1 = driver.FindElement(_checkBox1);
             checkBox1.Click();
             var checkBox2 = driver.FindElement(_checkBox2);
@@ -148,34 +200,43 @@ namespace My_TestProjectCian
             var checkBox4 = driver.FindElement(_checkBox4);
             checkBox4.Click();
             Thread.Sleep(3000);
+            //добавление фото
             var photoInput = driver.FindElement(_photoInput);
             photoInput.SendKeys(_photo1);
             photoInput.SendKeys(_photo2);
             Thread.Sleep(3000);
+            //добавление видео с youtube
             var youtubeTxt = driver.FindElement(_youtubeTxt);
             youtubeTxt.SendKeys(_youtubeText);
             Thread.Sleep(1000);
             var addBtn = driver.FindElement(_addBtn);
             addBtn.Click();
             Thread.Sleep(4000);
+            //ввод текста описания
             var aboutFlatTxt = driver.FindElement(_aboutFlatTxt);
             aboutFlatTxt.SendKeys(_aboutFlatText);
             Thread.Sleep(4000);
+            //ввод цены за квартиру
             var priceTxt = driver.FindElement(_priceTxt);
             priceTxt.SendKeys(_priceText);
             Thread.Sleep(2000);
+            //отключение переключателя об возможности ипотеки
             var ipotekaBtn = driver.FindElement(_ipotekaBtn);
             ipotekaBtn.Click();
             Thread.Sleep(2000);
+            //
             var saleTypeBtn = driver.FindElement(_saleTypeBtn);
             saleTypeBtn.Click();
             Thread.Sleep(4000);
+            //ввод основного номера телефона
             var numberTxt = driver.FindElement(_numberTxt);
             numberTxt.SendKeys(_numberText);
             Thread.Sleep(6000);
-            var payServiceBtn = driver.FindElement(By.XPath("//input[contains(@class,'dd31006766--input--pEuc7')]"));
+            //нажатие на div контейнер, для разфокуса ввода телефона с маской ввода
+            var payServiceBtn = driver.FindElement(By.XPath("//div[@data-name='ServicesLayoutToggle']"));
             payServiceBtn.Click();
             Thread.Sleep(4000);
+            //нажатие на кнопку Публикация объявления
             var publishBtn = driver.FindElement(_publishBtn);
             publishBtn.Click();
             Assert.Pass();
